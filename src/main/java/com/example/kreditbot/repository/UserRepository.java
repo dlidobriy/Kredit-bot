@@ -9,4 +9,6 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 
 
     Optional<User> findByChatId(String chatId);
+
+    Boolean existsByChatId(String chatId);
 }

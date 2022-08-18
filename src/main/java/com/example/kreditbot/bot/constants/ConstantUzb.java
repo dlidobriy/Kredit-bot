@@ -20,8 +20,7 @@ public interface ConstantUzb {
 
     String ShareMenuButtonUzbProfile = "Profil";
 
-
-
+    String ShareCategoryTextUZB = "Categoria tanlang!";
 
 
 

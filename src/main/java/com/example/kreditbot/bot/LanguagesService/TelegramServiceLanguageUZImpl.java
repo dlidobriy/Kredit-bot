@@ -1,6 +1,8 @@
 package com.example.kreditbot.bot.LanguagesService;
 
 import com.example.kreditbot.bot.constants.ConstantUzb;
+import com.example.kreditbot.entity.Category;
+import com.example.kreditbot.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -15,6 +17,9 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class TelegramServiceLanguageUZImpl implements TelegramLanguageService {
+
+    final CategoryRepository categoryRepository;
+
     @Override
     public SendMessage registerPhoneNumber(Update update) {
         SendMessage message = new SendMessage();
@@ -88,7 +93,32 @@ public class TelegramServiceLanguageUZImpl implements TelegramLanguageService {
 
     @Override
     public SendMessage category(Update update) {
-        return null;
+        SendMessage message = new SendMessage();
+        message.setChatId(String.valueOf(update.getMessage().getChatId()));
+        message.setText(ConstantUzb.ShareCategoryTextUZB);
+
+        ReplyKeyboardMarkup markup = new ReplyKeyboardMarkup();
+        markup.setResizeKeyboard(true);
+        markup.setOneTimeKeyboard(true);
+        markup.setSelective(true);
+
+
+        List<KeyboardRow> rows = new ArrayList<>();
+        KeyboardRow row1 = new KeyboardRow();
+
+        List<Category> categoriesById = categoryRepository.findAll();
+
+        KeyboardButton button1 = new KeyboardButton(categoriesById.get(0).getName());
+
+        row1.add(button1);
+
+        rows.add(row1);
+
+        markup.setKeyboard(rows);
+
+        message.setReplyMarkup(markup);
+
+        return message;
     }
 
     @Override

@@ -102,7 +102,7 @@ public class KreditBot extends TelegramLongPollingBot {
                             break;
                         case REGISTER:
                             String fullname = update.getMessage().getText();
-                            if (fullname.length() > 3 && fullname.length() <= 30) {
+                            if (fullname.length() >= 3 && fullname.length() <= 30) {
                                 switch (currentUser.getLang()) {
                                     case ConstantUzb.LanguageUzb:
                                         currentUser.setFullName(fullname);

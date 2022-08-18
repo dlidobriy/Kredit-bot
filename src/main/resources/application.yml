@@ -4,12 +4,12 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/kredit_bot
     username: postgres
-    password: lordmega007
+    password: root
     driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     defer-datasource-initialization: true
   sql:
     init:

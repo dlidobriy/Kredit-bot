@@ -31,10 +31,10 @@ public class Dataloader implements CommandLineRunner {
             Category category = categoryy1.get();
 
 
-            Product product1 = productRepository.save(new Product(1, "acer", category));
-            Product product2 = productRepository.save(new Product(2, "dell", category));
-            Product product3 = productRepository.save(new Product(3, "hp", category));
-            Product product4 = productRepository.save(new Product(4, "lenova", category));
+            Product product1 = productRepository.save(new Product(1, "acer", category,true));
+            Product product2 = productRepository.save(new Product(2, "dell", category,true));
+            Product product3 = productRepository.save(new Product(3, "hp", category,true));
+            Product product4 = productRepository.save(new Product(4, "lenova", category,true));
 
         }
 
